@@ -1,34 +1,24 @@
-function addNum0() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 0;
-}
-function addNum1() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 1;
-}
-function addNum2() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 2;
-}
-function addNum3() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 3;
-}
-function addNum4() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 4;
-}
-function addNum5() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 5;
-}
-function addNum6() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 6;
-}
-function addNum7() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 7;
-}
-function addNum8() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 8;
-}
-function addNum9() {
-  document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + 9;
+// *Number Button on-click function
+function numberAdd(num) {
+  return function () {
+    document.getElementById('digits').textContent = document.getElementById('digits').textContent * 10 + num;
+  };
 }
 
+//  !Can be possibly changed to an array
+const addNum0 = numberAdd(0);
+const addNum1 = numberAdd(1);
+const addNum2 = numberAdd(2);
+const addNum3 = numberAdd(3);
+const addNum4 = numberAdd(4);
+const addNum5 = numberAdd(5);
+const addNum6 = numberAdd(6);
+const addNum7 = numberAdd(7);
+const addNum8 = numberAdd(8);
+const addNum9 = numberAdd(9);
+
+//  *Button click Behaviour
+//  !function  name to be changed to something more relevant
 document.getElementById('btn-0').addEventListener('click', addNum0);
 document.getElementById('btn-1').addEventListener('click', addNum1);
 document.getElementById('btn-2').addEventListener('click', addNum2);
