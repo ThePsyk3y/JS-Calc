@@ -20,6 +20,10 @@
   margin-bottom: 0;
 }
 
+#js-text{
+  color: #ffff00;
+}
+
 .clearfix::after {
   content: '';
   display: table;
