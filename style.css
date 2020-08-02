@@ -6,6 +6,7 @@
 .nav-bar {
   width: 100%;
   background-color: #222222;
+  opacity: 70%;
   overflow: hidden;
 }
 
