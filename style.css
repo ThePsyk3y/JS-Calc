@@ -1,6 +1,22 @@
-html {
+* {
   margin: 0;
   padding: 0;
+}
+
+.nav-bar {
+  width: 100%;
+  background-color: #222222;
+  overflow: hidden;
+}
+
+#title {
+  float: left;
+  color: #d3d3d3;
+  font-size: 30px;
+  font-family: Lato;
+  margin: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .clearfix::after {
@@ -105,5 +121,5 @@ body {
 
 button:hover {
   background-color: #c3c3c3;
-  transition: background-color .4s;
+  transition: background-color 0.4s;
 }
