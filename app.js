@@ -44,9 +44,15 @@ function resDisp() {
 // *Number Button on-click function
 function numberDisp(num) {
   return function () {
-    getDigDoc.textContent = getDigDoc.textContent * 10 + num;
-    currNum = parseInt(getDigDoc.textContent, 10);
-    console.log(currNum);
+    if (currNum >= 0) {
+      getDigDoc.textContent = getDigDoc.textContent * 10 + num;
+      currNum = parseInt(getDigDoc.textContent, 10);
+      console.log(currNum);
+    } else {
+      getDigDoc.textContent = getDigDoc.textContent * 10 - num;
+      currNum = parseInt(getDigDoc.textContent, 10);
+      console.log(currNum);
+    }
   };
 }
 
@@ -67,6 +73,7 @@ function numberAdd() {
     resDisp();
   }
   prevNum = currNum;
+  currNum = 0;
   console.log(prevNum);
   currOp = '+';
   opCount += 1;
@@ -78,6 +85,7 @@ function numberSub() {
     resDisp();
   }
   prevNum = currNum;
+  currNum = 0;
   console.log(prevNum);
   currOp = '-';
   opCount += 1;
@@ -89,6 +97,7 @@ function numberMul() {
     resDisp();
   }
   prevNum = currNum;
+  currNum = 0;
   console.log(prevNum);
   currOp = '*';
   opCount += 1;
@@ -100,6 +109,7 @@ function numberDiv() {
     resDisp();
   }
   prevNum = currNum;
+  currNum = 0;
   console.log(prevNum);
   currOp = '/';
   opCount += 1;
