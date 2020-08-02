@@ -21,16 +21,24 @@ html {
 }
 
 .calc-panel {
-    width: 50%;
-    height: 500px;
-  }
+  width: 50%;
+  height: 500px;
+}
 
-.number-view{
-    position: absolute;
-    right: 0;
-    display: block;
-    padding: 10px;
-    margin: 10px;
-    background-color: darkgray;
-    outline: 1px solid rgb(80, 80, 80);
+.number-view {
+  position: absolute;
+  right: 0;
+  display: block;
+  padding: 10px;
+  margin: 25px;
+  width: 325px;
+  background-color: darkgray;
+  outline: 1px solid rgb(80, 80, 80);
+  text-align: right;
+}
+
+#digits {
+  font-family: Lato;
+  font-weight: bold;
+  font-size: 30px;
 }
