@@ -15,9 +15,13 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: rgb(226, 226, 226);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+}
+
+body {
+  background-image: url(assets/back.jpg);
 }
 
 .calc-panel {
@@ -65,7 +69,7 @@ html {
   left: 80%;
 }
 
-.operator-buttons button{
+.operator-buttons button {
   font-family: Lato;
   width: 50px;
   height: 60px;
@@ -75,13 +79,13 @@ html {
   margin: 5px;
 }
 
-.operator-buttons .column2-op{
+.operator-buttons .column2-op {
   display: grid;
   position: absolute;
   left: -75%;
 }
 
-.operator-buttons #btn-clear{
+.operator-buttons #btn-clear {
   font-size: 35px;
   color: red;
   outline: 2px solid black;
