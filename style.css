@@ -1,6 +1,27 @@
-html {
+* {
   margin: 0;
   padding: 0;
+}
+
+.nav-bar {
+  width: 100%;
+  background-color: #222222;
+  opacity: 70%;
+  overflow: hidden;
+}
+
+#title {
+  float: left;
+  color: #d3d3d3;
+  font-size: 30px;
+  font-family: Lato;
+  margin: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#js-text{
+  color: #ffff00;
 }
 
 .clearfix::after {
@@ -15,9 +36,14 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: #e2e2e2;
+  box-shadow: 5px 5px 15px #0000004d;
+  border-radius: 15px;
   overflow: hidden;
+}
+
+body {
+  background-image: url(assets/back.jpg);
 }
 
 .calc-panel {
@@ -33,9 +59,9 @@ html {
   margin: 25px;
   width: 325px;
   background-color: darkgray;
-  outline: 1px solid rgb(80, 80, 80);
   text-align: right;
-  outline: 2px solid rgb(102, 102, 102);
+  border: 2px solid #666666;
+  border-radius: 5px;
 }
 
 #digits {
@@ -51,10 +77,13 @@ html {
 }
 .number-buttons button {
   font-family: Lato;
+  width: 50px;
+  height: 60px;
   font-size: 45px;
-  font-weight: bold;
+  font-weight: 500;
   outline: none;
   margin: 5px;
+  border-radius: 10px;
 }
 
 .operator-buttons {
@@ -65,7 +94,7 @@ html {
   left: 80%;
 }
 
-.operator-buttons button{
+.operator-buttons button {
   font-family: Lato;
   width: 50px;
   height: 60px;
@@ -73,16 +102,51 @@ html {
   font-weight: bolder;
   outline: none;
   margin: 5px;
+  background: none;
+  border-radius: 10px;
 }
 
-.operator-buttons .column2-op{
+.operator-buttons .column2-op {
   display: grid;
   position: absolute;
   left: -75%;
 }
 
-.operator-buttons #btn-clear{
+.operator-buttons #btn-clear {
   font-size: 35px;
   color: red;
-  outline: 2px solid black;
+  border: 3px solid black;
+  margin-top: 65px;
+}
+
+#btn-res {
+  width: 50px;
+  height: 120px;
+}
+
+button:hover {
+  background-color: #c3c3c3;
+  transition: background-color 0.4s;
+}
+
+.foot-bar{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #222222;
+  color: #d3d3d3;
+  overflow: hidden;
+  opacity: 55%;
+}
+
+.foot-bar #credit{
+  float: right;
+  margin-right: 5px;
+  text-align: right;
+  font-family: Lato;
+}
+
+#gh-link  {
+  text-decoration: none;
+  color: #d3d3d3;
 }

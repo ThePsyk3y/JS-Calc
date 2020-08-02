@@ -8,9 +8,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Calc-JS</title>
+    <title>JS-Calc</title>
   </head>
   <body>
+    <header>
+      <div class="nav-bar">
+        <h1 id="title"><big id="js-text">JS</big> <small>Calc</small></h1>
+      </div>
+    </header>
+
     <main class="wrapper clearfix">
       <div class="calc-panel">
         <div class="number-view">
@@ -30,18 +36,24 @@
         </div>
         <div class="operator-buttons">
           <div class="column2-op">
-            <button id="btn-mul">*</button>
-            <button id="btn-div">/</button>
+            <button id="btn-mul">&times;</button>
+            <button id="btn-div">&divide;</button>
+            <button id="btn-res">&equals;</button>
           </div>
           <div class="base-op">
-            <button id="btn-add">+</button>
-            <button id="btn-sub">-</button>
-            <button id="btn-res">=</button>
+            <button id="btn-add">&plus;</button>
+            <button id="btn-sub">&minus;</button>
           </div>
           <button id="btn-clear">C</button>
         </div>
       </div>
     </main>
+
+    <footer>
+      <div class="foot-bar">
+        <div id="credit"> Made by <b><a href="http://github.com/ThePsyk3y" target="_blank" id="gh-link">Psyk3y</a></b> (<i>Souradeep</i>)</div>
+      </div>
+    </footer>
   </body>
   <script src="app.js"></script>
 </html>
