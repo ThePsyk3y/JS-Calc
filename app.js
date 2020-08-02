@@ -8,6 +8,12 @@ const getDigDoc = document.getElementById('digits');
 function clearDisp() {
   getDigDoc.textContent = 0;
 }
+function fullClearDisp() {
+  getDigDoc.textContent = 0;
+  prevNum = 0;
+  currNum = 0;
+  currOp = null;
+}
 
 // *Number Button on-click function
 function numberDisp(num) {
@@ -44,6 +50,20 @@ function numberSub() {
   clearDisp();
 }
 
+function numberMul() {
+  prevNum = currNum;
+  console.log(prevNum);
+  currOp = '*';
+  clearDisp();
+}
+
+function numberDiv() {
+  prevNum = currNum;
+  console.log(prevNum);
+  currOp = '/';
+  clearDisp();
+}
+
 function resDisp() {
   getDigDoc.textContent = 0;
   if (currOp === '+') {
@@ -54,6 +74,16 @@ function resDisp() {
   if (currOp === '-') {
     console.log(prevNum - currNum);
     getDigDoc.textContent = prevNum - currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
+  if (currOp === '*') {
+    console.log(prevNum + currNum);
+    getDigDoc.textContent = prevNum * currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
+  if (currOp === '/') {
+    console.log(prevNum - currNum);
+    getDigDoc.textContent = prevNum / currNum;
     currNum = parseInt(getDigDoc.textContent, 10);
   }
 }
@@ -74,4 +104,7 @@ document.getElementById('btn-9').addEventListener('click', dispNum9);
 //  ?For Operator Button Click
 document.getElementById('btn-add').addEventListener('click', numberAdd);
 document.getElementById('btn-sub').addEventListener('click', numberSub);
+document.getElementById('btn-mul').addEventListener('click', numberMul);
+document.getElementById('btn-div').addEventListener('click', numberDiv);
 document.getElementById('btn-res').addEventListener('click', resDisp);
+document.getElementById('btn-clear').addEventListener('click', fullClearDisp);
