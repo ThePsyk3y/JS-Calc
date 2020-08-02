@@ -3,6 +3,7 @@
 let prevNum;
 let currNum;
 let currOp;
+let opCount = 0;
 const getDigDoc = document.getElementById('digits');
 
 function clearDisp() {
@@ -13,6 +14,31 @@ function fullClearDisp() {
   prevNum = 0;
   currNum = 0;
   currOp = null;
+}
+
+function resDisp() {
+  opCount = 0;
+  getDigDoc.textContent = 0;
+  if (currOp === '+') {
+    console.log(prevNum + currNum);
+    getDigDoc.textContent = prevNum + currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
+  if (currOp === '-') {
+    console.log(prevNum - currNum);
+    getDigDoc.textContent = prevNum - currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
+  if (currOp === '*') {
+    console.log(prevNum * currNum);
+    getDigDoc.textContent = prevNum * currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
+  if (currOp === '/') {
+    console.log(prevNum / currNum);
+    getDigDoc.textContent = prevNum / currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
 }
 
 // *Number Button on-click function
@@ -37,55 +63,47 @@ const dispNum8 = numberDisp(8);
 const dispNum9 = numberDisp(9);
 
 function numberAdd() {
+  if (opCount > 0) {
+    resDisp();
+  }
   prevNum = currNum;
   console.log(prevNum);
   currOp = '+';
+  opCount += 1;
   clearDisp();
 }
 
 function numberSub() {
+  if (opCount > 0) {
+    resDisp();
+  }
   prevNum = currNum;
   console.log(prevNum);
   currOp = '-';
+  opCount += 1;
   clearDisp();
 }
 
 function numberMul() {
+  if (opCount > 0) {
+    resDisp();
+  }
   prevNum = currNum;
   console.log(prevNum);
   currOp = '*';
+  opCount += 1;
   clearDisp();
 }
 
 function numberDiv() {
+  if (opCount > 0) {
+    resDisp();
+  }
   prevNum = currNum;
   console.log(prevNum);
   currOp = '/';
+  opCount += 1;
   clearDisp();
-}
-
-function resDisp() {
-  getDigDoc.textContent = 0;
-  if (currOp === '+') {
-    console.log(prevNum + currNum);
-    getDigDoc.textContent = prevNum + currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
-  }
-  if (currOp === '-') {
-    console.log(prevNum - currNum);
-    getDigDoc.textContent = prevNum - currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
-  }
-  if (currOp === '*') {
-    console.log(prevNum + currNum);
-    getDigDoc.textContent = prevNum * currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
-  }
-  if (currOp === '/') {
-    console.log(prevNum - currNum);
-    getDigDoc.textContent = prevNum / currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
-  }
 }
 
 //  *Button click Behaviour
