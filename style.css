@@ -22,7 +22,7 @@ html {
 
 .calc-panel {
   width: 50%;
-  height: 500px;
+  height: 300px;
 }
 
 .number-view {
@@ -41,4 +41,15 @@ html {
   font-family: Lato;
   font-weight: bold;
   font-size: 30px;
+}
+
+.number-buttons {
+  position: relative;
+  top: 30%;
+  left: 25%;
+}
+.number-buttons button {
+  font-family: Lato;
+  font-size: 45px;
+  font-weight: bold;
 }
