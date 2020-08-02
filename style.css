@@ -35,6 +35,7 @@ html {
   background-color: darkgray;
   outline: 1px solid rgb(80, 80, 80);
   text-align: right;
+  outline: 2px solid rgb(102, 102, 102);
 }
 
 #digits {
@@ -78,4 +79,10 @@ html {
   display: grid;
   position: absolute;
   left: -75%;
+}
+
+.operator-buttons #btn-clear{
+  font-size: 35px;
+  color: red;
+  outline: 2px solid black;
 }
