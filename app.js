@@ -37,12 +37,23 @@ function numberAdd() {
   clearDisp();
 }
 
+function numberSub() {
+  prevNum = currNum;
+  console.log(prevNum);
+  currOp = '-';
+  clearDisp();
+}
+
 function resDisp() {
   getDigDoc.textContent = 0;
   if (currOp === '+') {
-    const sum = prevNum + currNum;
-    console.log(sum);
-    getDigDoc.textContent = sum;
+    console.log(prevNum + currNum);
+    getDigDoc.textContent = prevNum + currNum;
+    currNum = parseInt(getDigDoc.textContent, 10);
+  }
+  if (currOp === '-') {
+    console.log(prevNum - currNum);
+    getDigDoc.textContent = prevNum - currNum;
     currNum = parseInt(getDigDoc.textContent, 10);
   }
 }
@@ -62,4 +73,5 @@ document.getElementById('btn-9').addEventListener('click', dispNum9);
 
 //  ?For Operator Button Click
 document.getElementById('btn-add').addEventListener('click', numberAdd);
+document.getElementById('btn-sub').addEventListener('click', numberSub);
 document.getElementById('btn-res').addEventListener('click', resDisp);
