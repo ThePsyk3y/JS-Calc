@@ -106,6 +106,11 @@ function numberDiv() {
   clearDisp();
 }
 
+function flipNum() {
+  currNum *= -1;
+  getDigDoc.textContent = currNum;
+}
+
 //  *Button click Behaviour
 // ?For Number Button Click
 document.getElementById('btn-0').addEventListener('click', dispNum0);
@@ -119,10 +124,15 @@ document.getElementById('btn-7').addEventListener('click', dispNum7);
 document.getElementById('btn-8').addEventListener('click', dispNum8);
 document.getElementById('btn-9').addEventListener('click', dispNum9);
 
+//  ?For Number Manupulation
+document.getElementById('btn-int').addEventListener('click', flipNum);
+
 //  ?For Operator Button Click
 document.getElementById('btn-add').addEventListener('click', numberAdd);
 document.getElementById('btn-sub').addEventListener('click', numberSub);
 document.getElementById('btn-mul').addEventListener('click', numberMul);
 document.getElementById('btn-div').addEventListener('click', numberDiv);
 document.getElementById('btn-res').addEventListener('click', resDisp);
+
+//  ?For Clear Button Click
 document.getElementById('btn-clear').addEventListener('click', fullClearDisp);
