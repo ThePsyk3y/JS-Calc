@@ -57,8 +57,20 @@ function numberDisp(num) {
   };
 }
 
-const dispNum = [numberDisp(0), numberDisp(1), numberDisp(2), numberDisp(3), numberDisp(4), numberDisp(5), numberDisp(6), numberDisp(7), numberDisp(8), numberDisp(9)];
+const dispNum = [
+  numberDisp(0),
+  numberDisp(1),
+  numberDisp(2),
+  numberDisp(3),
+  numberDisp(4),
+  numberDisp(5),
+  numberDisp(6),
+  numberDisp(7),
+  numberDisp(8),
+  numberDisp(9),
+];
 
+/*
 function numberAdd() {
   if (opCount > 0) {
     resDisp();
@@ -106,6 +118,53 @@ function numberDiv() {
   opCount += 1;
   clearDisp();
 }
+*/
+
+function operations(oper) {
+  return function () {
+    if (opCount > 0) {
+      resDisp();
+    }
+    prevNum = currNum;
+    currNum = 0;
+    switch (oper) {
+      case '+':
+        currOp = '+';
+        opCount += 1;
+        clearDisp();
+        break;
+
+      case '-':
+        currOp = '-';
+        opCount += 1;
+        clearDisp();
+        break;
+
+      case '*':
+        currOp = '*';
+        opCount += 1;
+        clearDisp();
+        break;
+
+      case '/':
+        currOp = '/';
+        opCount += 1;
+        clearDisp();
+        break;
+
+      default:
+        console.log('error');
+        break;
+    }
+  };
+}
+
+const operFunc = [
+  operations('+'),
+  operations('-'),
+  operations('*'),
+  operations('/'),
+];
 
 function flipNum() {
   currNum *= -1;
@@ -129,10 +188,10 @@ document.getElementById('btn-9').addEventListener('click', dispNum[9]);
 document.getElementById('btn-int').addEventListener('click', flipNum);
 
 //  ?For Operator Button Click
-document.getElementById('btn-add').addEventListener('click', numberAdd);
-document.getElementById('btn-sub').addEventListener('click', numberSub);
-document.getElementById('btn-mul').addEventListener('click', numberMul);
-document.getElementById('btn-div').addEventListener('click', numberDiv);
+document.getElementById('btn-add').addEventListener('click', operFunc[0]);
+document.getElementById('btn-sub').addEventListener('click', operFunc[1]);
+document.getElementById('btn-mul').addEventListener('click', operFunc[2]);
+document.getElementById('btn-div').addEventListener('click', operFunc[3]);
 document.getElementById('btn-res').addEventListener('click', resDisp);
 
 //  ?For Clear Button Click
