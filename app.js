@@ -70,56 +70,6 @@ const dispNum = [
   numberDisp(9),
 ];
 
-/*
-function numberAdd() {
-  if (opCount > 0) {
-    resDisp();
-  }
-  prevNum = currNum;
-  currNum = 0;
-  console.log(prevNum);
-  currOp = '+';
-  opCount += 1;
-  clearDisp();
-}
-
-function numberSub() {
-  if (opCount > 0) {
-    resDisp();
-  }
-  prevNum = currNum;
-  currNum = 0;
-  console.log(prevNum);
-  currOp = '-';
-  opCount += 1;
-  clearDisp();
-}
-
-function numberMul() {
-  if (opCount > 0) {
-    resDisp();
-  }
-  prevNum = currNum;
-  currNum = 0;
-  console.log(prevNum);
-  currOp = '*';
-  opCount += 1;
-  clearDisp();
-}
-
-function numberDiv() {
-  if (opCount > 0) {
-    resDisp();
-  }
-  prevNum = currNum;
-  currNum = 0;
-  console.log(prevNum);
-  currOp = '/';
-  opCount += 1;
-  clearDisp();
-}
-*/
-
 function operations(oper) {
   return function () {
     if (opCount > 0) {
