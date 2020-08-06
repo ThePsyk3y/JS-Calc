@@ -1,0 +1,163 @@
+$calcbgcolor: #a9a9a9;
+$barbgcolor: #222222;
+$fontcolor: #d3d3d3;
+$fontfamily: Lato;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.nav-bar {
+  width: 100%;
+  background-color: $barbgcolor;
+  opacity: 70%;
+  overflow: hidden;
+
+  #title {
+    float: left;
+    color: #d3d3d3;
+    font-size: 30px;
+    font-family: $fontfamily;
+    margin: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #js-text {
+    color: #ffff00;
+  }
+}
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.wrapper {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e2e2e2;
+  box-shadow: 5px 5px 15px #0000004d;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+body {
+  background-image: url(../assets/back.jpg);
+}
+
+.calc-panel {
+  width: 50%;
+  height: 400px;
+}
+
+.number-view {
+  position: absolute;
+  right: 0;
+  display: block;
+  padding: 10px;
+  margin: 25px;
+  width: 325px;
+  background-color: $calcbgcolor;
+  text-align: right;
+  border: 2px solid #666666;
+  border-radius: 5px;
+}
+
+#digits {
+  font-family: $fontfamily;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.number-buttons {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 25%;
+  left: 5%;
+
+  button {
+    font-family: $fontfamily;
+    width: 50px;
+    height: 60px;
+    font-size: 45px;
+    font-weight: 500;
+    outline: none;
+    margin: 5px;
+    border-radius: 10px;
+  }
+}
+
+#btn-int {
+  font-weight: 500;
+}
+
+.operator-buttons {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  width: 60px;
+  top: 25%;
+  left: 80%;
+
+  button {
+    font-family: $fontfamily;
+    width: 50px;
+    height: 60px;
+    font-size: 25px;
+    font-weight: bolder;
+    outline: none;
+    margin: 5px;
+    background: none;
+    border-radius: 10px;
+  }
+
+  .column2-op {
+    display: grid;
+    position: absolute;
+    left: -95%;
+  }
+
+  #btn-clear {
+    font-size: 35px;
+    color: red;
+    border: 3px solid black;
+    margin-top: 65px;
+  }
+}
+
+#btn-res {
+  width: 50px;
+  height: 120px;
+}
+
+button:hover {
+  background-color: #c3c3c3;
+  transition: background-color 0.4s;
+}
+
+.foot-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $barbgcolor;
+  color: $fontcolor;
+  overflow: hidden;
+  opacity: 55%;
+
+  #credit {
+    float: right;
+    margin-right: 5px;
+    text-align: right;
+    font-family: $fontfamily;
+  }
+
+  #gh-link {
+    text-decoration: none;
+    color: $fontcolor;
+  }
+}
