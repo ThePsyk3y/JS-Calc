@@ -1,4 +1,5 @@
-$calcbgcolor: #a9a9a9;
+$calcbgcolor: #e2e2e2;
+$numviewbgcolor: #a9a9a9;
 $barbgcolor: #222222;
 $fontcolor: #d3d3d3;
 $fontfamily: Lato;
@@ -42,7 +43,7 @@ $btnbgcolor: #c3c3c3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #e2e2e2;
+  background-color: $calcbgcolor;
   box-shadow: 5px 5px 15px #0000004d;
   border-radius: 15px;
   overflow: hidden;
@@ -64,7 +65,7 @@ body {
   padding: 10px;
   margin: 25px;
   width: 325px;
-  background-color: $calcbgcolor;
+  background-color: $numviewbgcolor;
   text-align: right;
   border: 2px solid #666666;
   border-radius: 5px;
