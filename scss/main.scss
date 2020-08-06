@@ -1,6 +1,9 @@
 $calcbgcolor: #e2e2e2;
 $numviewbgcolor: #a9a9a9;
 $barbgcolor: #222222;
+@mixin overflowset(){
+  overflow: hidden,
+};
 $fontcolor: #d3d3d3;
 $fontfamily: Lato;
 $btnwidth: 50px;
@@ -11,11 +14,12 @@ $btnbgcolor: #c3c3c3;
   margin: 0;
   padding: 0;
 }
+
 .nav-bar {
   width: 100%;
   background-color: $barbgcolor;
   opacity: 70%;
-  overflow: hidden;
+  @include overflowset();
 
   #title {
     float: left;
@@ -46,7 +50,7 @@ $btnbgcolor: #c3c3c3;
   background-color: $calcbgcolor;
   box-shadow: 5px 5px 15px #0000004d;
   border-radius: 15px;
-  overflow: hidden;
+  @include overflowset();
 }
 
 body {
@@ -150,7 +154,7 @@ button:hover {
   width: 100%;
   background-color: $barbgcolor;
   color: $fontcolor;
-  overflow: hidden;
+  @include overflowset();
   opacity: 55%;
 
   #credit {
