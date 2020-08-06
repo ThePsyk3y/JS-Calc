@@ -4,6 +4,7 @@ $fontcolor: #d3d3d3;
 $fontfamily: Lato;
 $btnwidth: 50px;
 $btnheight: 60px;
+$btnbgcolor: #c3c3c3;
 
 * {
   margin: 0;
@@ -133,12 +134,12 @@ body {
 }
 
 #btn-res {
-  width: 50px;
+  width: $btnwidth;
   height: 120px;
 }
 
 button:hover {
-  background-color: #c3c3c3;
+  background-color: $btnbgcolor;
   transition: background-color 0.4s;
 }
 
