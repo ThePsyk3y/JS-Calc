@@ -2,6 +2,8 @@ $calcbgcolor: #a9a9a9;
 $barbgcolor: #222222;
 $fontcolor: #d3d3d3;
 $fontfamily: Lato;
+$btnwidth: 50px;
+$btnheight: 60px;
 
 * {
   margin: 0;
@@ -82,8 +84,8 @@ body {
 
   button {
     font-family: $fontfamily;
-    width: 50px;
-    height: 60px;
+    width: $btnwidth;
+    height: $btnheight;
     font-size: 45px;
     font-weight: 500;
     outline: none;
@@ -106,8 +108,8 @@ body {
 
   button {
     font-family: $fontfamily;
-    width: 50px;
-    height: 60px;
+    width: $btnwidth;
+    height: $btnheight;
     font-size: 25px;
     font-weight: bolder;
     outline: none;
