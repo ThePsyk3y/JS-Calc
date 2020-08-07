@@ -127,16 +127,16 @@ body {
   left: -95%;
 }
 
-.operator-buttons #btn-clear {
-  font-size: 35px;
+.operator-buttons #btn-clear, .operator-buttons #btn-ent-clear {
+  text-align: center;
+  font-size: 30px;
   color: red;
-  border: 3px solid black;
-  margin-top: 65px;
+  border: 3px solid auto;
 }
 
 #btn-res {
   width: 50px;
-  height: 120px;
+  height: 130px;
 }
 
 button:hover {
