@@ -31,7 +31,9 @@
 }
 
 .wrapper {
-  width: 400px;
+  width: 70%;
+  max-width: 400px;
+  height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,22 +50,21 @@ body {
   background-image: url(../assets/back.jpg);
 }
 
-.calc-panel {
-  width: 50%;
-  height: 400px;
-}
-
 .number-view {
-  position: absolute;
-  right: 0;
+  position: relative;
   display: block;
   padding: 10px;
-  margin: 25px;
-  width: 325px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  width: 82%;
+  max-width: 325px;
+  min-width: 50%;
   background-color: #a9a9a9;
   text-align: right;
   border: 2px solid #666666;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 #digits {
@@ -78,7 +79,8 @@ body {
   place-content: center;
   position: absolute;
   top: 25%;
-  left: 5%;
+  margin-left: 5%;
+  margin-right: auto;
 }
 
 .number-buttons button {
