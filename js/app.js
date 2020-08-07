@@ -59,33 +59,16 @@ function resDisp() {
 // *Number Button on-click function
 function numberDisp(num) {
   if (currNum >= 0) {
-    // getDigDoc.textContent = getDigDoc.value * 10 + num;
     getDigDoc.value = getDigDoc.value === '0' ? currNum : getDigDoc.value + num;
     currNum = parseInt(getDigDoc.value, 10);
     console.log(currNum);
   } else {
-    // getDigDoc.textContent = getDigDoc.value * 10 - num;
     getDigDoc.value = getDigDoc.value === '0' ? currNum * -1 : getDigDoc.value - num;
     currNum = parseInt(getDigDoc.value, 10);
     console.log(currNum);
   }
   digitCount();
 }
-
-/*
-const dispNum = [
-  numberDisp(0),
-  numberDisp(1),
-  numberDisp(2),
-  numberDisp(3),
-  numberDisp(4),
-  numberDisp(5),
-  numberDisp(6),
-  numberDisp(7),
-  numberDisp(8),
-  numberDisp(9),
-];
-*/
 
 function operations(oper) {
   return function () {
