@@ -19,6 +19,7 @@ function fullClearDisp() {
   currNum = 0;
   digiCount = 1;
   currOp = null;
+  console.clear();
 }
 
 function digitCount() {
@@ -31,40 +32,50 @@ function digitCount() {
   console.log(digiCount);
 }
 
+function inputDecimal(dot) {
+  // !Can Accept more than one Decimal point. Needs Fix!
+  if (!(currNum % 1 !== 0));
+  else {
+    getDigDoc.value += dot;
+    currNum = parseFloat(getDigDoc.value, 10);
+  }
+}
+
 function resDisp() {
   opCount = 0;
   getDigDoc.value = '';
   if (currOp === '+') {
     console.log(prevNum + currNum);
     getDigDoc.value = prevNum + currNum;
-    currNum = parseInt(getDigDoc.value, 10);
+    currNum = parseFloat(getDigDoc.value, 10);
   }
   if (currOp === '-') {
     console.log(prevNum - currNum);
     getDigDoc.value = prevNum - currNum;
-    currNum = parseInt(getDigDoc.value, 10);
+    currNum = parseFloat(getDigDoc.value, 10);
   }
   if (currOp === '*') {
     console.log(prevNum * currNum);
     getDigDoc.value = prevNum * currNum;
-    currNum = parseInt(getDigDoc.value, 10);
+    currNum = parseFloat(getDigDoc.value, 10);
   }
   if (currOp === '/') {
     console.log(prevNum / currNum);
     getDigDoc.value = prevNum / currNum;
-    currNum = parseInt(getDigDoc.value, 10);
+    currNum = parseFloat(getDigDoc.value, 10);
   }
 }
 
 // *Number Button on-click function
 function numberDisp(num) {
+  // !Can't Display Decimal > 1.
   if (currNum >= 0) {
-    getDigDoc.value = getDigDoc.value === '0' ? currNum : getDigDoc.value + num;
-    currNum = parseInt(getDigDoc.value, 10);
+    getDigDoc.value = getDigDoc.value === '0' ? num : getDigDoc.value + num;
+    currNum = parseFloat(getDigDoc.value, 10);
     console.log(currNum);
   } else {
-    getDigDoc.value = getDigDoc.value === '0' ? currNum * -1 : getDigDoc.value - num;
-    currNum = parseInt(getDigDoc.value, 10);
+    getDigDoc.value = getDigDoc.value === '0' ? num * -1 : getDigDoc.value - num;
+    currNum = parseFloat(getDigDoc.value, 10);
     console.log(currNum);
   }
   digitCount();
@@ -128,19 +139,14 @@ document.querySelector('.number-buttons').addEventListener('click', (event) => {
   if (!target.matches('button')) {
     return;
   }
-
-  /*
-  if (target.classList.contains('decimal')) {
-    inputDecimal(target.value);
-    updateDisplay();
-    return;
-  } */
-
   numberDisp(target.value);
 });
 
 //  ?For Number Manupulation
 document.getElementById('btn-int').addEventListener('click', flipNum);
+document.getElementById('btn-decimal').addEventListener('click', () => {
+  inputDecimal('.');
+});
 
 //  ?For Operator Button Click
 document.getElementById('btn-add').addEventListener('click', operFunc[0]);
