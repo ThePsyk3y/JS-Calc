@@ -147,3 +147,4 @@ document.getElementById('btn-res').addEventListener('click', resDisp);
 
 //  ?For Clear Button Click
 document.getElementById('btn-clear').addEventListener('click', fullClearDisp);
+document.getElementById('btn-ent-clear').addEventListener('click', clearDisp);
