@@ -1,9 +1,11 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable func-names */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 //  *Variable Declarations
 let prevNum = 0;
 let currNum = 0;
+let digiCount = 1;
 let currOp;
 let opCount = 0;
 const getDigDoc = document.getElementById('digits');
@@ -15,7 +17,17 @@ function fullClearDisp() {
   getDigDoc.textContent = 0;
   prevNum = 0;
   currNum = 0;
+  digiCount = 1;
   currOp = null;
+}
+
+function digitCount() {
+  digiCount = 1;
+  while (currNum / 10 >= 1) {
+    currNum /= 10;
+    digiCount++;
+  }
+  console.log(digiCount);
 }
 
 function resDisp() {
@@ -55,6 +67,7 @@ function numberDisp(num) {
       currNum = parseInt(getDigDoc.textContent, 10);
       console.log(currNum);
     }
+    digitCount();
   };
 }
 
@@ -147,3 +160,4 @@ document.getElementById('btn-res').addEventListener('click', resDisp);
 
 //  ?For Clear Button Click
 document.getElementById('btn-clear').addEventListener('click', fullClearDisp);
+document.getElementById('btn-ent-clear').addEventListener('click', clearDisp);
