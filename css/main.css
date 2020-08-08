@@ -84,7 +84,7 @@ body {
   display: grid;
   place-content: center;
   position: absolute;
-  top: 35%;
+  top: 35.7%;
   margin-left: 5%;
   margin-right: auto;
 }
@@ -110,7 +110,7 @@ body {
   place-content: center;
   position: absolute;
   width: 60px;
-  top: 35%;
+  top: 35.7%;
   left: 80%;
 }
 
@@ -133,13 +133,22 @@ body {
   left: -95%;
 }
 
+#mem-btn-sep {
+  position: absolute;
+  top: 35%;
+  left: 7%;
+  width: 85%;
+  height: 1px;
+  background-color: #a9a9a9;
+}
+
 .memory-buttons {
   display: -ms-grid;
   display: grid;
   place-content: center;
   position: absolute;
   width: 60px;
-  top: 20%;
+  top: 19.2%;
   left: 21.2%;
   margin-top: 5px;
 }
