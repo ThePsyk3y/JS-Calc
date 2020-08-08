@@ -5,7 +5,7 @@
 //  *Variable Declarations
 let prevNum = 0;
 let currNum = 0;
-let digiCount = 1;
+// let digiCount = 1;
 let currOp;
 let opCount = 0;
 let decVal = 1;
@@ -24,6 +24,7 @@ function fullClearDisp() {
   console.clear();
 }
 
+/*
 function digitCount() {
   digiCount = 1;
   let currcop = currNum;
@@ -32,14 +33,6 @@ function digitCount() {
     digiCount++;
   }
   console.log(digiCount);
-}
-
-/*
-function decCheck(num) {
-  if () {
-    return (0.1 + num / 10) - 0.1;
-  }
-  return num;
 }
 */
 
@@ -88,7 +81,7 @@ function numberDisp(num) {
     currNum = parseFloat(getDigDoc.value, 10);
     console.log(currNum);
   }
-  digitCount();
+  // digitCount();
 }
 
 function operations(oper) {
