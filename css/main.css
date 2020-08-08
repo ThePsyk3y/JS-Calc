@@ -67,10 +67,16 @@ body {
   overflow: hidden;
 }
 
-#digits {
+.number-view #digits {
+  text-align: right;
+  outline: none;
+  border: none;
+  background-color: #a9a9a9;
   font-family: Lato;
   font-weight: bold;
   font-size: 30px;
+  color: black;
+  padding-right: 5px;
 }
 
 .number-buttons {
@@ -127,7 +133,8 @@ body {
   left: -95%;
 }
 
-.operator-buttons #btn-clear, .operator-buttons #btn-ent-clear {
+.operator-buttons #btn-clear,
+.operator-buttons #btn-ent-clear {
   text-align: center;
   font-size: 30px;
   color: red;
