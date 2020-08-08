@@ -33,7 +33,7 @@
 .wrapper {
   width: 70%;
   max-width: 400px;
-  height: 400px;
+  height: 450px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -84,7 +84,7 @@ body {
   display: grid;
   place-content: center;
   position: absolute;
-  top: 25%;
+  top: 35%;
   margin-left: 5%;
   margin-right: auto;
 }
@@ -110,7 +110,7 @@ body {
   place-content: center;
   position: absolute;
   width: 60px;
-  top: 25%;
+  top: 35%;
   left: 80%;
 }
 
@@ -133,12 +133,35 @@ body {
   left: -95%;
 }
 
-.operator-buttons #btn-clear,
-.operator-buttons #btn-ent-clear {
-  text-align: center;
-  font-size: 30px;
-  color: red;
-  border: 3px solid auto;
+.memory-buttons {
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  position: absolute;
+  width: 60px;
+  top: 20%;
+  left: 21.2%;
+  margin-top: 5px;
+}
+
+.memory-buttons button {
+  font-family: Lato;
+  width: 50px;
+  height: 60px;
+  font-size: 35px;
+  font-weight: bold;
+  background: none;
+  border-radius: 10px;
+  border-width: 2px;
+  outline: none;
+  color: darkred;
+}
+
+.memory-buttons .mem-col2 {
+  display: -ms-grid;
+  display: grid;
+  position: absolute;
+  left: -100%;
 }
 
 #btn-res {
