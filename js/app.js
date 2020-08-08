@@ -8,7 +8,9 @@ let currNum = 0;
 let digiCount = 1;
 let currOp;
 let opCount = 0;
+let decVal = 1;
 const getDigDoc = document.getElementById('digits');
+getDigDoc.value = '';
 
 function clearDisp() {
   getDigDoc.value = '';
@@ -32,11 +34,19 @@ function digitCount() {
   console.log(digiCount);
 }
 
-function inputDecimal(dot) {
+/*
+function decCheck(num) {
+  if () {
+    return (0.1 + num / 10) - 0.1;
+  }
+  return num;
+}
+*/
+
+function inputDecimal() {
   // !Can Accept more than one Decimal point. Needs Fix!
-  if (!(currNum % 1 !== 0));
-  else {
-    getDigDoc.value += dot;
+  if (decVal !== 1) {
+    getDigDoc.value = (getDigDoc.valuel + 0.0) / 10;
     currNum = parseFloat(getDigDoc.value, 10);
   }
 }
@@ -68,13 +78,13 @@ function resDisp() {
 
 // *Number Button on-click function
 function numberDisp(num) {
-  // !Can't Display Decimal > 1.
+  // // !Can't Display Decimal > 1.
   if (currNum >= 0) {
-    getDigDoc.value = getDigDoc.value === '0' ? num : getDigDoc.value + num;
+    getDigDoc.value = getDigDoc.value === '' ? num : getDigDoc.value + num;
     currNum = parseFloat(getDigDoc.value, 10);
     console.log(currNum);
   } else {
-    getDigDoc.value = getDigDoc.value === '0' ? num * -1 : getDigDoc.value - num;
+    getDigDoc.value = getDigDoc.value === '' ? num * -1 : getDigDoc.value - num;
     currNum = parseFloat(getDigDoc.value, 10);
     console.log(currNum);
   }
@@ -129,7 +139,7 @@ const operFunc = [
 
 function flipNum() {
   currNum *= -1;
-  getDigDoc.textContent = currNum;
+  getDigDoc.value = currNum;
 }
 
 //  *Button click Behaviour
@@ -145,7 +155,8 @@ document.querySelector('.number-buttons').addEventListener('click', (event) => {
 //  ?For Number Manupulation
 document.getElementById('btn-int').addEventListener('click', flipNum);
 document.getElementById('btn-decimal').addEventListener('click', () => {
-  inputDecimal('.');
+  inputDecimal();
+  decVal = 1;
 });
 
 //  ?For Operator Button Click
