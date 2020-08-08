@@ -123,11 +123,34 @@ function operations(oper) {
   };
 }
 
+function advOperations(oper) {
+  return function () {
+    switch (oper) {
+      case '^':
+        currNum *= currNum;
+        getDigDoc.value = currNum;
+        break;
+      case '#':
+        currNum = Math.sqrt(currNum);
+        getDigDoc.value = currNum;
+        break;
+      default:
+        console.log('Error');
+        break;
+    }
+  };
+}
+
 const operFunc = [
   operations('+'),
   operations('-'),
   operations('*'),
   operations('/'),
+];
+
+const advOperFunc = [
+  advOperations('^'),
+  advOperations('#'),
 ];
 
 function flipNum() {
@@ -157,6 +180,9 @@ document.getElementById('btn-add').addEventListener('click', operFunc[0]);
 document.getElementById('btn-sub').addEventListener('click', operFunc[1]);
 document.getElementById('btn-mul').addEventListener('click', operFunc[2]);
 document.getElementById('btn-div').addEventListener('click', operFunc[3]);
+document.getElementById('btn-sqrt').addEventListener('click', advOperFunc[1]);
+document.getElementById('btn-sqr').addEventListener('click', advOperFunc[0]);
+
 document.getElementById('btn-res').addEventListener('click', resDisp);
 
 //  ?For Clear Button Click
