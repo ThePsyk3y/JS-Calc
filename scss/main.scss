@@ -1,9 +1,9 @@
 $calcbgcolor: #e2e2e2;
 $numviewbgcolor: #a9a9a9;
 $barbgcolor: #222222;
-@mixin overflowset(){
-  overflow: hidden,
-};
+@mixin overflowset() {
+  overflow: hidden;
+}
 $fontcolor: #d3d3d3;
 $fontfamily: Lato;
 $btnwidth: 50px;
@@ -74,12 +74,18 @@ body {
   border: 2px solid #666666;
   border-radius: 5px;
   @include overflowset();
-}
 
-#digits {
-  font-family: $fontfamily;
-  font-weight: bold;
-  font-size: 30px;
+  #digits {
+    text-align: right;
+    outline: none;
+    border: none;
+    background-color: $numviewbgcolor;
+    font-family: $fontfamily;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    padding-right: 5px;
+  }
 }
 
 .number-buttons {
@@ -132,7 +138,8 @@ body {
     left: -95%;
   }
 
-  #btn-clear, #btn-ent-clear {
+  #btn-clear,
+  #btn-ent-clear {
     text-align: center;
     font-size: 30px;
     color: red;

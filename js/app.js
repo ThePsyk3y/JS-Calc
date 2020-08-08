@@ -5,84 +5,84 @@
 //  *Variable Declarations
 let prevNum = 0;
 let currNum = 0;
-let digiCount = 1;
+// let digiCount = 1;
 let currOp;
 let opCount = 0;
+let decVal = 1;
 const getDigDoc = document.getElementById('digits');
+getDigDoc.value = '';
 
 function clearDisp() {
-  getDigDoc.textContent = 0;
+  getDigDoc.value = '';
 }
 function fullClearDisp() {
-  getDigDoc.textContent = 0;
+  getDigDoc.value = '';
   prevNum = 0;
   currNum = 0;
   digiCount = 1;
   currOp = null;
+  console.clear();
 }
 
+/*
 function digitCount() {
   digiCount = 1;
-  while (currNum / 10 >= 1) {
-    currNum /= 10;
+  let currcop = currNum;
+  while (currcop / 10 >= 1) {
+    currcop /= 10;
     digiCount++;
   }
   console.log(digiCount);
 }
+*/
+
+function inputDecimal() {
+  // !Can Accept more than one Decimal point. Needs Fix!
+  if (decVal !== 1) {
+    getDigDoc.value = (getDigDoc.valuel + 0.0) / 10;
+    currNum = parseFloat(getDigDoc.value, 10);
+  }
+}
 
 function resDisp() {
   opCount = 0;
-  getDigDoc.textContent = 0;
+  getDigDoc.value = '';
   if (currOp === '+') {
     console.log(prevNum + currNum);
-    getDigDoc.textContent = prevNum + currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
+    getDigDoc.value = prevNum + currNum;
+    currNum = parseFloat(getDigDoc.value, 10);
   }
   if (currOp === '-') {
     console.log(prevNum - currNum);
-    getDigDoc.textContent = prevNum - currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
+    getDigDoc.value = prevNum - currNum;
+    currNum = parseFloat(getDigDoc.value, 10);
   }
   if (currOp === '*') {
     console.log(prevNum * currNum);
-    getDigDoc.textContent = prevNum * currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
+    getDigDoc.value = prevNum * currNum;
+    currNum = parseFloat(getDigDoc.value, 10);
   }
   if (currOp === '/') {
     console.log(prevNum / currNum);
-    getDigDoc.textContent = prevNum / currNum;
-    currNum = parseInt(getDigDoc.textContent, 10);
+    getDigDoc.value = prevNum / currNum;
+    currNum = parseFloat(getDigDoc.value, 10);
   }
 }
 
 // *Number Button on-click function
 function numberDisp(num) {
-  return function () {
-    if (currNum >= 0) {
-      getDigDoc.textContent = getDigDoc.textContent * 10 + num;
-      currNum = parseInt(getDigDoc.textContent, 10);
-      console.log(currNum);
-    } else {
-      getDigDoc.textContent = getDigDoc.textContent * 10 - num;
-      currNum = parseInt(getDigDoc.textContent, 10);
-      console.log(currNum);
-    }
-    digitCount();
-  };
+  // // !Can't Display Decimal > 1.
+  if (currNum >= 0) {
+    getDigDoc.value = getDigDoc.value === '' ? num : getDigDoc.value + num;
+    currNum = parseFloat(getDigDoc.value, 10);
+    console.log(currNum);
+  } else {
+    getDigDoc.value = getDigDoc.value === '' ? num * -1 : getDigDoc.value - num;
+    currNum = parseFloat(getDigDoc.value, 10);
+    console.log(currNum);
+  }
+  // digitCount();
 }
-
-const dispNum = [
-  numberDisp(0),
-  numberDisp(1),
-  numberDisp(2),
-  numberDisp(3),
-  numberDisp(4),
-  numberDisp(5),
-  numberDisp(6),
-  numberDisp(7),
-  numberDisp(8),
-  numberDisp(9),
-];
 
 function operations(oper) {
   return function () {
@@ -132,24 +132,25 @@ const operFunc = [
 
 function flipNum() {
   currNum *= -1;
-  getDigDoc.textContent = currNum;
+  getDigDoc.value = currNum;
 }
 
 //  *Button click Behaviour
 // ?For Number Button Click
-document.getElementById('btn-0').addEventListener('click', dispNum[0]);
-document.getElementById('btn-1').addEventListener('click', dispNum[1]);
-document.getElementById('btn-2').addEventListener('click', dispNum[2]);
-document.getElementById('btn-3').addEventListener('click', dispNum[3]);
-document.getElementById('btn-4').addEventListener('click', dispNum[4]);
-document.getElementById('btn-5').addEventListener('click', dispNum[5]);
-document.getElementById('btn-6').addEventListener('click', dispNum[6]);
-document.getElementById('btn-7').addEventListener('click', dispNum[7]);
-document.getElementById('btn-8').addEventListener('click', dispNum[8]);
-document.getElementById('btn-9').addEventListener('click', dispNum[9]);
+document.querySelector('.number-buttons').addEventListener('click', (event) => {
+  const { target } = event;
+  if (!target.matches('button')) {
+    return;
+  }
+  numberDisp(target.value);
+});
 
 //  ?For Number Manupulation
 document.getElementById('btn-int').addEventListener('click', flipNum);
+document.getElementById('btn-decimal').addEventListener('click', () => {
+  inputDecimal();
+  decVal = 1;
+});
 
 //  ?For Operator Button Click
 document.getElementById('btn-add').addEventListener('click', operFunc[0]);
