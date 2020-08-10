@@ -12,9 +12,11 @@ let decVal = 1;
 const getDigDoc = document.getElementById('digits');
 getDigDoc.value = '';
 
+// *Clears current entry
 function clearDisp() {
   getDigDoc.value = '';
 }
+// *Clears Entire Application (logs and entry history)
 function fullClearDisp() {
   getDigDoc.value = '';
   prevNum = 0;
@@ -36,6 +38,7 @@ function digitCount() {
 }
 */
 
+// *Handles Decimal Inputs
 function inputDecimal() {
   // !Can Accept more than one Decimal point. Needs Fix!
   if (decVal !== 1) {
@@ -44,6 +47,7 @@ function inputDecimal() {
   }
 }
 
+// *Displays Result
 function resDisp() {
   opCount = 0;
   getDigDoc.value = '';
@@ -71,7 +75,6 @@ function resDisp() {
 
 // *Number Button on-click function
 function numberDisp(num) {
-  // // !Can't Display Decimal > 1.
   if (currNum >= 0) {
     getDigDoc.value = getDigDoc.value === '' ? num : getDigDoc.value + num;
     currNum = parseFloat(getDigDoc.value, 10);
@@ -84,6 +87,7 @@ function numberDisp(num) {
   // digitCount();
 }
 
+// *Operator on-click function (Assigns a current operator)
 function operations(oper) {
   return function () {
     if (opCount > 0) {
@@ -123,6 +127,7 @@ function operations(oper) {
   };
 }
 
+// *Advanced operations on-click functions (Mostly for immediately displaying result)
 function advOperations(oper) {
   return function () {
     switch (oper) {
@@ -153,6 +158,7 @@ const advOperFunc = [
   advOperations('#'),
 ];
 
+// *Flips number value from negative to positive and vice-versa
 function flipNum() {
   currNum *= -1;
   getDigDoc.value = currNum;
@@ -168,7 +174,7 @@ document.querySelector('.number-buttons').addEventListener('click', (event) => {
   numberDisp(target.value);
 });
 
-//  ?For Number Manupulation
+//  ?For Number Manipulation
 document.getElementById('btn-int').addEventListener('click', flipNum);
 document.getElementById('btn-decimal').addEventListener('click', () => {
   inputDecimal();
@@ -185,6 +191,6 @@ document.getElementById('btn-sqr').addEventListener('click', advOperFunc[0]);
 
 document.getElementById('btn-res').addEventListener('click', resDisp);
 
-//  ?For Clear Button Click
+//  ?For Memory Manipulation
 document.getElementById('btn-clear').addEventListener('click', fullClearDisp);
 document.getElementById('btn-ent-clear').addEventListener('click', clearDisp);
