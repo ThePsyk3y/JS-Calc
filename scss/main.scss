@@ -185,7 +185,7 @@ body {
 
 button:hover {
   background-color: $btnbgcolor;
-  transition: background-color 0.8s;
+  transition: background-color 0.8s ease-out;
 }
 
 .foot-bar {

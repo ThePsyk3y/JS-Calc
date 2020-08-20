@@ -180,8 +180,8 @@ body {
 
 button:hover {
   background-color: #c3c3c3;
-  -webkit-transition: background-color 0.8s;
-  transition: background-color 0.8s;
+  -webkit-transition: background-color 0.8s ease-out;
+  transition: background-color 0.8s ease-out;
 }
 
 .foot-bar {
