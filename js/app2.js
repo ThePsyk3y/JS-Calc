@@ -15,6 +15,9 @@ const numberController = (function number() {
       numberData.digiCount = 1;
       numberData.currOp = null;
     },
+    clearCurrent() {
+      numberData.currNum = 0;
+    },
 
     numUpdate(digVal, num) {
       if (numberData.currNum >= 0) {
@@ -138,6 +141,12 @@ const appController = (function appCont(numberCtrl, UICtrl) {
     console.clear();
   };
 
+  // *Clears current entry
+  const entClear = function entClr() {
+    UICtrl.clearDisp();
+    numberCtrl.clearCurrent();
+  };
+
   const OperationUpdate = function operUp(oper) {
     return function operUpclos() {
       numberCtrl.assignOper(oper);
@@ -201,7 +210,7 @@ const appController = (function appCont(numberCtrl, UICtrl) {
 
     //  ?Memory Manipulation Button Listeners
     document.getElementById(ctrlClassID.clrID).addEventListener('click', fullClear);
-    // document.getElementById(ctrlClassID.entryClearID).addEventListener('click', clear);
+    document.getElementById(ctrlClassID.entryClearID).addEventListener('click', entClear);
   };
   return {
     init() {
