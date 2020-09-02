@@ -82,6 +82,12 @@ const numberController = (function number() {
 
     assignPrev() {
       numberData.prevNum = numberData.currNum;
+      numberData.currNum = 0;
+    },
+
+    flipNum() {
+      numberData.currNum *= -1;
+      return numberData.currNum;
     },
 
     getNumData() {
@@ -184,13 +190,18 @@ const appController = (function appCont(numberCtrl, UICtrl) {
     // ?Number Button Listeners
     document.querySelector(ctrlClassID.numberID).addEventListener('click', (event) => {
       const { target } = event;
-      if (!target.matches('button') || target.value === '.') {
+      if (!target.matches('button') || target.value === '.' || target.value === '-') {
         return;
       }
       numberDisp(target.value);
     });
 
-    // document.getElementById(ctrlClassID.intID).addEventListener('click' /* flipNum */);
+    // !If used when field is empty will diplay 0 without any change to succeding numbers
+    document.getElementById(ctrlClassID.intID).addEventListener('click', () => {
+      const flipNumb = numberCtrl.flipNum();
+      console.log(flipNumb);
+      UICtrl.dispUpdate(flipNumb);
+    });
     document.getElementById(ctrlClassID.decID).addEventListener('click', () => {
       inputDecimal();
       decVal = 1;
