@@ -1,190 +1,234 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable func-names */
-/* eslint-disable max-len */
 /* eslint-disable no-console */
-//  *Variable Declarations
-let prevNum = 0;
-let currNum = 0;
-// let digiCount = 1;
-let currOp;
-let opCount = 0;
-let decVal = 1;
-const getDigDoc = document.getElementById('digits');
-getDigDoc.value = '';
+/* eslint-disable no-param-reassign */
+const numberController = (function number() {
+  const numberData = {
+    currNum: 0,
+    prevNum: 0,
+    currOp: null,
+    opCount: 0,
+    decval: 1,
+  };
+  return {
+    fullClearNumData() {
+      numberData.prevNum = 0;
+      numberData.currNum = 0;
+      numberData.digiCount = 1;
+      numberData.currOp = null;
+    },
+    clearCurrent() {
+      numberData.currNum = 0;
+    },
 
-function clearDisp() {
-  getDigDoc.value = '';
-}
-function fullClearDisp() {
-  getDigDoc.value = '';
-  prevNum = 0;
-  currNum = 0;
-  digiCount = 1;
-  currOp = null;
-  console.clear();
-}
+    numUpdate(digVal, num) {
+      if (numberData.currNum >= 0) {
+        digVal = digVal === '' ? num : digVal + num;
+        numberData.currNum = parseFloat(digVal, 10);
+        console.log(numberData.currNum);
+        return digVal;
+      }
+      digVal = digVal === '' ? num * -1 : digVal - num;
+      numberData.currNum = parseFloat(digVal, 10);
+      console.log(numberData.currNum);
+      return digVal;
+    },
 
-/*
-function digitCount() {
-  digiCount = 1;
-  let currcop = currNum;
-  while (currcop / 10 >= 1) {
-    currcop /= 10;
-    digiCount++;
-  }
-  console.log(digiCount);
-}
-*/
+    calcRes() {
+      switch (numberData.currOp) {
+        case '+':
+          numberData.currNum = numberData.prevNum + numberData.currNum;
+          break;
 
-function inputDecimal() {
-  // !Can Accept more than one Decimal point. Needs Fix!
-  if (decVal !== 1) {
-    getDigDoc.value = (getDigDoc.valuel + 0.0) / 10;
-    currNum = parseFloat(getDigDoc.value, 10);
-  }
-}
+        case '-':
+          numberData.currNum = numberData.prevNum - numberData.currNum;
+          break;
 
-function resDisp() {
-  opCount = 0;
-  getDigDoc.value = '';
-  if (currOp === '+') {
-    console.log(prevNum + currNum);
-    getDigDoc.value = prevNum + currNum;
-    currNum = parseFloat(getDigDoc.value, 10);
-  }
-  if (currOp === '-') {
-    console.log(prevNum - currNum);
-    getDigDoc.value = prevNum - currNum;
-    currNum = parseFloat(getDigDoc.value, 10);
-  }
-  if (currOp === '*') {
-    console.log(prevNum * currNum);
-    getDigDoc.value = prevNum * currNum;
-    currNum = parseFloat(getDigDoc.value, 10);
-  }
-  if (currOp === '/') {
-    console.log(prevNum / currNum);
-    getDigDoc.value = prevNum / currNum;
-    currNum = parseFloat(getDigDoc.value, 10);
-  }
-}
+        case '*':
+          numberData.currNum *= numberData.prevNum;
+          break;
 
-// *Number Button on-click function
-function numberDisp(num) {
-  // // !Can't Display Decimal > 1.
-  if (currNum >= 0) {
-    getDigDoc.value = getDigDoc.value === '' ? num : getDigDoc.value + num;
-    currNum = parseFloat(getDigDoc.value, 10);
-    console.log(currNum);
-  } else {
-    getDigDoc.value = getDigDoc.value === '' ? num * -1 : getDigDoc.value - num;
-    currNum = parseFloat(getDigDoc.value, 10);
-    console.log(currNum);
-  }
-  // digitCount();
-}
+        case '/':
+          numberData.currNum = numberData.prevNum / numberData.currNum;
+          break;
 
-function operations(oper) {
-  return function () {
-    if (opCount > 0) {
-      resDisp();
-    }
-    prevNum = currNum;
-    currNum = 0;
-    switch (oper) {
-      case '+':
-        currOp = '+';
-        opCount += 1;
-        clearDisp();
-        break;
+        default:
+          console.log('No operator selected!');
+          break;
+      }
+      return numberData.currNum;
+    },
 
-      case '-':
-        currOp = '-';
-        opCount += 1;
-        clearDisp();
-        break;
+    advCalc(oper) {
+      switch (oper) {
+        case '^':
+          numberData.currNum *= numberData.currNum;
+          break;
 
-      case '*':
-        currOp = '*';
-        opCount += 1;
-        clearDisp();
-        break;
+        case '#':
+          numberData.currNum = Math.sqrt(numberData.currNum);
+          break;
 
-      case '/':
-        currOp = '/';
-        opCount += 1;
-        clearDisp();
-        break;
+        default:
+          console.log('Error');
+          break;
+      }
+      return numberData.currNum;
+    },
 
-      default:
-        console.log('error');
-        break;
+    assignOper(oper) {
+      numberData.currOp = oper;
+      numberData.opCount += 1;
+      console.log(numberData.currOp);
+    },
+
+    assignPrev() {
+      numberData.prevNum = numberData.currNum;
+      numberData.currNum = 0;
+    },
+
+    flipNum() {
+      numberData.currNum *= -1;
+      return numberData.currNum;
+    },
+
+    getNumData() {
+      return numberData;
+    },
+  };
+})();
+
+const UIController = (function UI() {
+  const UIClassID = {
+    numberID: '.number-buttons',
+    intID: 'btn-int',
+    decID: 'btn-decimal',
+    addID: 'btn-add',
+    subID: 'btn-sub',
+    mulID: 'btn-mul',
+    divID: 'btn-div',
+    sqrtID: 'btn-sqrt',
+    sqrID: 'btn-sqr',
+    resultID: 'btn-res',
+    clrID: 'btn-clear',
+    entryClearID: 'btn-ent-clear',
+    digDoc: document.getElementById('digits'),
+  };
+
+  return {
+    dispUpdate(val) {
+      UIClassID.digDoc.value = val;
+    },
+
+    clearDisp() {
+      UIClassID.digDoc.value = '';
+    },
+
+    getClassID() {
+      return UIClassID;
+    },
+  };
+})();
+
+const appController = (function appCont(numberCtrl, UICtrl) {
+  const ctrlClassID = UICtrl.getClassID();
+  let decVal = 0;
+
+  const numberDisp = function numDis(num) {
+    // *Calulate number
+    const dispNum = numberCtrl.numUpdate(ctrlClassID.digDoc.value, num);
+
+    // *Update UI with new number
+    UICtrl.dispUpdate(dispNum);
+  };
+
+  // *Clears Entire Application
+  const fullClear = function fullClr() {
+    numberCtrl.fullClearNumData();
+    UICtrl.clearDisp();
+    console.clear();
+  };
+
+  // *Clears current entry
+  const entClear = function entClr() {
+    UICtrl.clearDisp();
+    numberCtrl.clearCurrent();
+  };
+
+  const OperationUpdate = function operUp(oper) {
+    return function operUpclos() {
+      numberCtrl.assignOper(oper);
+      numberCtrl.assignPrev();
+      UICtrl.clearDisp();
+    };
+  };
+  const operFunc = [OperationUpdate('+'), OperationUpdate('-'), OperationUpdate('*'), OperationUpdate('/')];
+
+  const advOperationUpdate = function operUp(oper) {
+    return function operUpclos() {
+      const advRes = numberCtrl.advCalc(oper);
+      UICtrl.dispUpdate(advRes);
+    };
+  };
+  const advOperFunc = [advOperationUpdate('^'), advOperationUpdate('#')];
+
+  const resDisp = function displayResult() {
+    // *Calculate operation between currNum and prevNum
+    const result = numberCtrl.calcRes();
+    console.log(`result = ${result}`);
+    // *Update UI with result
+    UICtrl.dispUpdate(result);
+  };
+
+  const inputDecimal = function inDec() {
+    let dispNum = parseFloat(ctrlClassID.digDoc.value);
+    if (decVal < 1) {
+      dispNum += '.';
+      UICtrl.dispUpdate(dispNum);
     }
   };
-}
 
-function advOperations(oper) {
-  return function () {
-    switch (oper) {
-      case '^':
-        currNum *= currNum;
-        getDigDoc.value = currNum;
-        break;
-      case '#':
-        currNum = Math.sqrt(currNum);
-        getDigDoc.value = currNum;
-        break;
-      default:
-        console.log('Error');
-        break;
-    }
+  const setupEventListeners = function eventList() {
+    // ?Number Button Listeners
+    document.querySelector(ctrlClassID.numberID).addEventListener('click', (event) => {
+      const { target } = event;
+      if (!target.matches('button') || target.value === '.' || target.value === '-') {
+        return;
+      }
+      numberDisp(target.value);
+    });
+
+    // !If used when field is empty will diplay 0 without any change to succeding numbers
+    document.getElementById(ctrlClassID.intID).addEventListener('click', () => {
+      const flipNumb = numberCtrl.flipNum();
+      console.log(flipNumb);
+      UICtrl.dispUpdate(flipNumb);
+    });
+    document.getElementById(ctrlClassID.decID).addEventListener('click', () => {
+      inputDecimal();
+      decVal = 1;
+    });
+
+    //  ?Operator Button Listeners
+    document.getElementById(ctrlClassID.addID).addEventListener('click', operFunc[0]);
+    document.getElementById(ctrlClassID.subID).addEventListener('click', operFunc[1]);
+    document.getElementById(ctrlClassID.mulID).addEventListener('click', operFunc[2]);
+    document.getElementById(ctrlClassID.divID).addEventListener('click', operFunc[3]);
+
+    // ?Advanced Operator Button Listeners
+    document.getElementById(ctrlClassID.sqrtID).addEventListener('click', advOperFunc[1]);
+    document.getElementById(ctrlClassID.sqrID).addEventListener('click', advOperFunc[0]);
+
+    document.getElementById(ctrlClassID.resultID).addEventListener('click', resDisp);
+
+    //  ?Memory Manipulation Button Listeners
+    document.getElementById(ctrlClassID.clrID).addEventListener('click', fullClear);
+    document.getElementById(ctrlClassID.entryClearID).addEventListener('click', entClear);
   };
-}
+  return {
+    init() {
+      fullClear();
+      setupEventListeners();
+    },
+  };
+})(numberController, UIController);
 
-const operFunc = [
-  operations('+'),
-  operations('-'),
-  operations('*'),
-  operations('/'),
-];
-
-const advOperFunc = [
-  advOperations('^'),
-  advOperations('#'),
-];
-
-function flipNum() {
-  currNum *= -1;
-  getDigDoc.value = currNum;
-}
-
-//  *Button click Behaviour
-// ?For Number Button Click
-document.querySelector('.number-buttons').addEventListener('click', (event) => {
-  const { target } = event;
-  if (!target.matches('button')) {
-    return;
-  }
-  numberDisp(target.value);
-});
-
-//  ?For Number Manupulation
-document.getElementById('btn-int').addEventListener('click', flipNum);
-document.getElementById('btn-decimal').addEventListener('click', () => {
-  inputDecimal();
-  decVal = 1;
-});
-
-//  ?For Operator Button Click
-document.getElementById('btn-add').addEventListener('click', operFunc[0]);
-document.getElementById('btn-sub').addEventListener('click', operFunc[1]);
-document.getElementById('btn-mul').addEventListener('click', operFunc[2]);
-document.getElementById('btn-div').addEventListener('click', operFunc[3]);
-document.getElementById('btn-sqrt').addEventListener('click', advOperFunc[1]);
-document.getElementById('btn-sqr').addEventListener('click', advOperFunc[0]);
-
-document.getElementById('btn-res').addEventListener('click', resDisp);
-
-//  ?For Clear Button Click
-document.getElementById('btn-clear').addEventListener('click', fullClearDisp);
-document.getElementById('btn-ent-clear').addEventListener('click', clearDisp);
+appController.init();
