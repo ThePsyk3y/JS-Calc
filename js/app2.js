@@ -6,6 +6,7 @@ const numberController = (function number() {
     prevNum: 0,
     currOp: null,
     opCount: 0,
+    decval: 1,
   };
   return {
     fullClearNumData() {
@@ -30,24 +31,25 @@ const numberController = (function number() {
       switch (numberData.currOp) {
         case '+':
           numberData.currNum = numberData.prevNum + numberData.currNum;
-          return numberData.currNum;
+          break;
 
         case '-':
           numberData.currNum = numberData.prevNum - numberData.currNum;
-          return numberData.currNum;
+          break;
 
         case '*':
           numberData.currNum *= numberData.prevNum;
-          return numberData.currNum;
+          break;
 
         case '/':
           numberData.currNum = numberData.prevNum / numberData.currNum;
-          return numberData.currNum;
+          break;
 
         default:
-          console.log('error');
+          console.log('No operator selected!');
           break;
       }
+      return numberData.currNum;
     },
     assignOper(oper) {
       numberData.currOp = oper;
@@ -94,6 +96,7 @@ const UIController = (function UI() {
 
 const appController = (function appCont(numberCtrl, UICtrl) {
   const ctrlClassID = UICtrl.getClassID();
+  let decVal = 0;
 
   const numberDisp = function numDis(num) {
     // *Calulate number
@@ -126,6 +129,14 @@ const appController = (function appCont(numberCtrl, UICtrl) {
     UICtrl.dispUpdate(result);
   };
 
+  const inputDecimal = function inDec() {
+    let dispNum = parseFloat(ctrlClassID.digDoc.value);
+    if (decVal < 1) {
+      dispNum += '.';
+      UICtrl.dispUpdate(dispNum);
+    }
+  };
+
   const setupEventListeners = function eventList() {
     // ?Number Button Listeners
     document.querySelector(ctrlClassID.numberID).addEventListener('click', (event) => {
@@ -137,10 +148,10 @@ const appController = (function appCont(numberCtrl, UICtrl) {
     });
 
     // document.getElementById(ctrlClassID.intID).addEventListener('click' /* flipNum */);
-    /* document.getElementById(ctrlClassID.decID).addEventListener('click', () => {
+    document.getElementById(ctrlClassID.decID).addEventListener('click', () => {
       inputDecimal();
       decVal = 1;
-    }); */
+    });
 
     //  ?Operator Button Listeners
     document.getElementById(ctrlClassID.addID).addEventListener('click', operFunc[0]);
