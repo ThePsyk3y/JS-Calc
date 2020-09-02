@@ -15,6 +15,7 @@ const numberController = (function number() {
       numberData.digiCount = 1;
       numberData.currOp = null;
     },
+
     numUpdate(digVal, num) {
       if (numberData.currNum >= 0) {
         digVal = digVal === '' ? num : digVal + num;
@@ -27,6 +28,7 @@ const numberController = (function number() {
       console.log(numberData.currNum);
       return digVal;
     },
+
     calcRes() {
       switch (numberData.currOp) {
         case '+':
@@ -51,14 +53,34 @@ const numberController = (function number() {
       }
       return numberData.currNum;
     },
+
+    advCalc(oper) {
+      switch (oper) {
+        case '^':
+          numberData.currNum *= numberData.currNum;
+          break;
+
+        case '#':
+          numberData.currNum = Math.sqrt(numberData.currNum);
+          break;
+
+        default:
+          console.log('Error');
+          break;
+      }
+      return numberData.currNum;
+    },
+
     assignOper(oper) {
       numberData.currOp = oper;
       numberData.opCount += 1;
       console.log(numberData.currOp);
     },
+
     assignPrev() {
       numberData.prevNum = numberData.currNum;
     },
+
     getNumData() {
       return numberData;
     },
@@ -81,13 +103,16 @@ const UIController = (function UI() {
     entryClearID: 'btn-ent-clear',
     digDoc: document.getElementById('digits'),
   };
+
   return {
     dispUpdate(val) {
       UIClassID.digDoc.value = val;
     },
+
     clearDisp() {
       UIClassID.digDoc.value = '';
     },
+
     getClassID() {
       return UIClassID;
     },
@@ -110,16 +135,25 @@ const appController = (function appCont(numberCtrl, UICtrl) {
   const fullClear = function fullClr() {
     numberCtrl.fullClearNumData();
     UICtrl.clearDisp();
+    console.clear();
   };
 
   const OperationUpdate = function operUp(oper) {
-    return function () {
+    return function operUpclos() {
       numberCtrl.assignOper(oper);
       numberCtrl.assignPrev();
       UICtrl.clearDisp();
     };
   };
   const operFunc = [OperationUpdate('+'), OperationUpdate('-'), OperationUpdate('*'), OperationUpdate('/')];
+
+  const advOperationUpdate = function operUp(oper) {
+    return function operUpclos() {
+      const advRes = numberCtrl.advCalc(oper);
+      UICtrl.dispUpdate(advRes);
+    };
+  };
+  const advOperFunc = [advOperationUpdate('^'), advOperationUpdate('#')];
 
   const resDisp = function displayResult() {
     // *Calculate operation between currNum and prevNum
@@ -160,8 +194,8 @@ const appController = (function appCont(numberCtrl, UICtrl) {
     document.getElementById(ctrlClassID.divID).addEventListener('click', operFunc[3]);
 
     // ?Advanced Operator Button Listeners
-    // document.getElementById(ctrlClassID.sqrtID).addEventListener('click', advOperFunc[1]);
-    // document.getElementById(ctrlClassID.sqrID).addEventListener('click', advOperFunc[0]);
+    document.getElementById(ctrlClassID.sqrtID).addEventListener('click', advOperFunc[1]);
+    document.getElementById(ctrlClassID.sqrID).addEventListener('click', advOperFunc[0]);
 
     document.getElementById(ctrlClassID.resultID).addEventListener('click', resDisp);
 
