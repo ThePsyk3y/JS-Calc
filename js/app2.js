@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-param-reassign */
 const numberController = (function number() {
   const numberData = {
     currNum: 0,
@@ -50,6 +52,9 @@ const UIController = (function UI() {
     dispUpdate(val) {
       UIClassID.digDoc.value = val;
     },
+    clearDisp() {
+      UIClassID.digDoc.value = '';
+    },
     getClassID() {
       return UIClassID;
     },
@@ -62,8 +67,15 @@ const appController = (function appCont(numberCrtl, UICrtl) {
   const numberDisp = function numDis(num) {
     // *Calulate number
     const dispNum = numberCrtl.numUpdate(ctrlClassID.digDoc.value, num);
+
     // *Update UI with new number
     UICrtl.dispUpdate(dispNum);
+  };
+
+  // *Clears Entire Application
+  const fullClear = function fullClr() {
+    numberCrtl.fullClearNumData();
+    UICrtl.clearDisp();
   };
 
   const setupEventListeners = function eventList() {
@@ -75,6 +87,7 @@ const appController = (function appCont(numberCrtl, UICrtl) {
       }
       numberDisp(target.value);
     });
+
     // document.getElementById(ctrlClassID.intID).addEventListener('click' /* flipNum */);
     /* document.getElementById(ctrlClassID.decID).addEventListener('click', () => {
       inputDecimal();
@@ -86,6 +99,7 @@ const appController = (function appCont(numberCrtl, UICrtl) {
     // document.getElementById(ctrlClassID.subID).addEventListener('click', operFunc[1]);
     // document.getElementById(ctrlClassID.mulID).addEventListener('click', operFunc[2]);
     // document.getElementById(ctrlClassID.divID).addEventListener('click', operFunc[3]);
+
     // ?Advanced Operator Button Listeners
     // document.getElementById(ctrlClassID.sqrtID).addEventListener('click', advOperFunc[1]);
     // document.getElementById(ctrlClassID.sqrID).addEventListener('click', advOperFunc[0]);
@@ -93,11 +107,12 @@ const appController = (function appCont(numberCrtl, UICrtl) {
     // document.getElementById(ctrlClassID.resultID).addEventListener('click', resDisp);
 
     //  ?Memory Manipulation Button Listeners
-    // document.getElementById(ctrlClassID.clrID).addEventListener('click', fullClearDisp);
-    // document.getElementById(ctrlClassID.entryClearID).addEventListener('click', clearDisp);
+    document.getElementById(ctrlClassID.clrID).addEventListener('click', fullClear);
+    // document.getElementById(ctrlClassID.entryClearID).addEventListener('click', clear);
   };
   return {
     init() {
+      fullClear();
       setupEventListeners();
     },
   };
