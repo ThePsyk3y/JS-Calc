@@ -145,16 +145,19 @@ const appController = (function appCont(numberCtrl, UICtrl) {
     numberCtrl.fullClearNumData();
     UICtrl.clearDisp();
     console.clear();
+    decVal = 0;
   };
 
   // *Clears current entry
   const entClear = function entClr() {
     UICtrl.clearDisp();
     numberCtrl.clearCurrent();
+    decVal = 0;
   };
 
   const OperationUpdate = function operUp(oper) {
     return function operUpclos() {
+      decVal = 0;
       numberCtrl.assignOper(oper);
       numberCtrl.assignPrev();
       UICtrl.clearDisp();
