@@ -1,0 +1,37 @@
+{
+  "name": "js-clac",
+  "version": "0.0.5",
+  "description": "A Javascript-based Calculator",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThePsyk3y/JS-Calc.git"
+  },
+  "author": "Souradeep Bhattacharya",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ThePsyk3y/JS-Calc/issues"
+  },
+  "homepage": "https://github.com/ThePsyk3y/JS-Calc#readme",
+  "dependencies": {
+    "vue": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.5",
+    "html-webpack-plugin": "^4.5.0",
+    "install": "^0.13.0",
+    "npm": "^7.0.5",
+    "regenerator-runtime": "^0.13.7",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
