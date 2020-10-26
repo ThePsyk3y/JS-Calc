@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,600"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>JS-Calc</title>
+  </head>
+  <body>
+    <header>
+      <div class="nav-bar">
+        <h1 id="title"><big id="js-text">JS</big> <small>Calc</small></h1>
+      </div>
+    </header>
+
+    <main class="wrapper clearfix">
+      <div class="calc-panel">
+        <div class="number-view">
+          <input id="digits" value="" disabled />
+        </div>
+        <div class="number-buttons">
+          <div class="base-num">
+            <button value="7" id="btn-7">7</button>
+            <button value="8" id="btn-8">8</button>
+            <button value="9" id="btn-9">9</button>
+          </div>
+          <div class="row2-num">
+            <button value="4" id="btn-4">4</button>
+            <button value="5" id="btn-5">5</button>
+            <button value="6" id="btn-6">6</button>
+          </div>
+          <div class="row3-num">
+            <button value="1" id="btn-1">1</button>
+            <button value="2" id="btn-2">2</button>
+            <button value="3" id="btn-3">3</button>
+          </div>
+          <div class="row4-num">
+            <button value="0" id="btn-0">0</button>
+            <button id="btn-int" value="-">&plusmn;</button>
+            <button id="btn-decimal" value=".">.</button>
+          </div>
+        </div>
+        <div class="operator-buttons">
+          <div class="column2-op">
+            <button id="btn-mul">&times;</button>
+            <button id="btn-div">&divide;</button>
+            <button id="btn-res">&equals;</button>
+          </div>
+          <div class="base-op">
+            <button id="btn-add">&plus;</button>
+            <button id="btn-sub">&minus;</button>
+            <button id="btn-sqrt">&Sqrt;</button>
+            <button id="btn-sqr">
+              x<sup><small>2</small></sup>
+            </button>
+          </div>
+        </div>
+        <div class="memory-buttons">
+          <button id="btn-ent-clear">
+            C<small><sub>E</sub></small>
+          </button>
+          <div class="mem-col2"><button id="btn-clear">C</button></div>
+        </div>
+
+        <hr id="mem-btn-sep" />
+      </div>
+    </main>
+
+    <footer>
+      <div class="foot-bar">
+        <div id="credit">
+          Made by
+          <b
+            ><a href="http://github.com/ThePsyk3y" target="_blank" id="gh-link"
+              >Psyk3y</a
+            ></b
+          >
+          (<i>Souradeep</i>)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
